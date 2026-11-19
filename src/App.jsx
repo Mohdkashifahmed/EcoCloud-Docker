@@ -26,7 +26,27 @@ function App(){
   const stats=[{label:'Monthly consumption',value:`${total.toFixed(1)} kWh`,sub:'Estimated from your appliances',icon:Zap,tone:'green',delta:'Live estimate'},{label:'Estimated monthly bill',value:money(bill),sub:`At ${money(tariff)} per kWh`,icon:Wallet,tone:'amber',delta:'Tariff based'},{label:'Registered appliances',value:devices.length,sub:`${active.length} currently active`,icon:PlugZap,tone:'blue',delta:'Device inventory'},{label:'Potential monthly savings',value:money(activeKwh*tariff*.12),sub:'Illustrative 12% efficiency target',icon:TrendingDown,tone:'purple',delta:'Opportunity'}];
   const notify=m=>{setNotice(m);setTimeout(()=>setNotice(''),3500)};
   async function authenticate(e){e.preventDefault();setAuthError('');if(authPassword.length<8){setAuthError('Password must be at least 8 characters.');return;}setAuthBusy(true);try{if(!cloudConfigured){setAuthError('Supabase credentials are missing. Use Continue in demo mode, or configure your .env file.');return;}const result=authMode==='signup'?await supabase.auth.signUp({email:authEmail,password:authPassword,options:{data:{full_name:authName}}}):await supabase.auth.signInWithPassword({email:authEmail,password:authPassword});if(result.error)throw result.error;if(authMode==='signup'&&!result.data.session)notify('Account created. Check your email to confirm, then log in.');}catch(err){setAuthError(err.message)}finally{setAuthBusy(false)}}
-  async function logout(){if(cloudConfigured&&user)await supabase.auth.signOut();setUser(null);setCloudUser(false);setDevices(seedDevices);setPage('dashboard');}
+  async function logout(){
+    try {
+      if (cloudConfigured && user) {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+      }
+
+      setSession(null);
+      setUser(null);
+      setCloudUser(false);
+      setDevices(seedDevices);
+      setAuthMode('login');
+      setAuthEmail('');
+      setAuthPassword('');
+      setAuthError('');
+      setPage('login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+      notify('Unable to sign out: ' + error.message);
+    }
+  }
   async function persistSave(form){try{if(cloudUser){const d=await saveDevice(form,user.id);setDevices(old=>form.id?old.map(x=>x.id===d.id?d:x):[d,...old]);}else{setDevices(old=>form.id?old.map(x=>x.id===form.id?{...form}:x):[{...form,id:'d'+Date.now()},...old]);}setModal(null);notify('Appliance saved successfully.');}catch(e){notify('Unable to save appliance: '+e.message)}}
   async function deleteOne(d){if(!confirm(`Delete ${d.name}?`))return;try{if(cloudUser)await removeDevice(d.id);setDevices(old=>old.filter(x=>x.id!==d.id));notify('Appliance deleted.')}catch(e){notify(e.message)}}
   async function toggle(d){const next={...d,is_active:!d.is_active};await persistSave(next);}

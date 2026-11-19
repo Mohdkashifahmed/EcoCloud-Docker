@@ -4,3 +4,43 @@
 
 .landing-page{padding:18px 0 10px}.landing-hero{background:linear-gradient(115deg,#eff8f1 0%,#f8fbf8 58%,#e5f4e9 100%);border:1px solid #e5efe6;border-radius:18px;min-height:390px;padding:44px 5%;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;overflow:hidden}.landing-copy{max-width:540px;position:relative;z-index:1}.landing-copy .eyebrow{color:#208b64}.landing-copy h1{font:800 clamp(36px,4.5vw,57px)/1.12 Manrope;letter-spacing:-2px;color:#183d2d;margin:14px 0}.landing-copy h1 em{font-style:normal;color:#15966b}.landing-copy>p{font-size:13px;line-height:1.8;color:#708278;max-width:450px}.landing-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}.landing-proof{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px}.landing-proof span{font-size:9px;color:#6d8175;display:flex;align-items:center;gap:5px}.landing-proof svg{width:13px;color:#15966b}.landing-visual{min-height:290px;position:relative;display:grid;place-items:center}.landing-orbit{position:absolute;border:1px solid #c9e6d2;border-radius:50%;width:280px;height:280px}.orbit-two{width:360px;height:360px;border-color:#d8ebdc}.landing-energy-card{width:min(310px,85%);background:#fff;border:1px solid #e5eee6;border-radius:16px;padding:20px;box-shadow:0 20px 55px #285d3b18;position:relative;z-index:1;transform:rotate(2deg)}.energy-card-head,.energy-card-foot{display:flex;justify-content:space-between;align-items:center}.energy-card-head>span:first-child{display:flex;align-items:center;gap:7px;font-size:9px;letter-spacing:.8px;font-weight:700;color:#6b8074}.energy-card-head svg{color:#15966b}.energy-card-value{font:800 35px Manrope;color:#1b3c2c;margin-top:25px}.energy-card-value small{font:500 12px 'DM Sans';color:#829187}.landing-energy-card>p{font-size:10px;color:#8b9b90;margin:0}.energy-bars{height:90px;display:flex;align-items:end;gap:10px;border-bottom:1px solid #e9f0ea;margin:15px 0}.energy-bars i{flex:1;background:linear-gradient(#54bd8d,#d5f0df);border-radius:5px 5px 0 0}.energy-card-foot{font-size:9px;color:#87968d}.energy-card-foot span{display:flex;align-items:center;gap:6px}.energy-card-foot i{width:6px;height:6px;border-radius:50%;background:#15966b}.energy-card-foot b{font:800 17px Manrope;color:#15966b}.floating-leaf{position:absolute;right:7%;top:12%;height:58px;width:58px;background:#fff;color:#15966b;border-radius:18px;display:grid;place-items:center;box-shadow:0 12px 30px #285d3b18;transform:rotate(-12deg)}.landing-feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:17px 0}.landing-feature-row>div{background:#fff;border:1px solid #e9f0ea;border-radius:12px;padding:17px;display:grid;grid-template-columns:30px 1fr;column-gap:10px}.landing-feature-row svg{grid-row:span 2;color:#15966b;width:20px}.landing-feature-row b{font:700 11px Manrope}.landing-feature-row small{font-size:9px;color:#89988f;margin-top:4px;line-height:1.5}.landing-bottom{display:flex;align-items:center;justify-content:space-between;padding:23px 5%;background:#143f30;border-radius:14px;color:#fff}.landing-bottom .eyebrow{color:#9dcbb0}.landing-bottom h2{font:700 17px Manrope;margin:7px 0 0;max-width:520px}.landing-bottom .btn{white-space:nowrap}
 @media(max-width:760px){.landing-hero{grid-template-columns:1fr;padding:28px 22px}.landing-copy h1{font-size:39px}.landing-visual{min-height:260px}.landing-feature-row{grid-template-columns:1fr}.landing-bottom{align-items:flex-start;gap:17px;flex-direction:column}.landing-bottom h2{font-size:15px}}
+.profile-wrap {
+  position: relative;
+}
+
+.profile-wrap .profile {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 180px;
+  background: white;
+  border: 1px solid #e5ebe7;
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+.profile-menu button {
+  display: block;
+  width: 100%;
+  padding: 11px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #173f32;
+}
+
+.profile-menu button:hover {
+  background: #f0f6f2;
+}
