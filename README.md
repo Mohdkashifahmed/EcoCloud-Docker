@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # EcoCloud — Smart Cloud-Based Energy Monitoring System
 
 **Monitor Smart. Save Energy. Build a Greener Future.**
@@ -63,3 +64,7 @@ Push the project to GitHub, import the repository in Vercel, configure the three
 - No API key is required to run demo mode.
 - Browser-local demo state resets on refresh by design; this avoids misrepresenting local storage as cloud persistence.
 - For production, add server-side admin APIs, audit logging, measured IoT ingestion, and automated tests.
+=======
+# EcoCloud-Docker
+EcoCloud energy intelligence platform with Docker implementation
+>>>>>>> 8afd66e1101dcdf9bb132e5e7942966b530f4f44
